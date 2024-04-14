@@ -52,5 +52,9 @@ jobs:
       if: runner.os == 'macOS' || runner.os == 'Linux'
       run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
 
-    - name: Test
-      run: dotnet test src/Tesseract.sln --no-build --verbosity normal
+    - name: Test .NET Core
+      run: dotnet test src/Tesseract.NetCore31Tests/Tesseract.NetCore31Tests.csproj --no-build --verbosity normal
+
+    - name: Test .NET Framework
+      if: runner.os == 'Windows'
+      run: dotnet test src/Tesseract.Net48Tests/Tesseract.Net48Tests.csproj --no-build --verbosity normal
