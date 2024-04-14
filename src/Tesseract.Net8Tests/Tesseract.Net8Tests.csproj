@@ -212,12 +212,12 @@
     <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/libtesseract.so.5 $(OutDir)x64/libtesseract50.so" />
   </Target>
 
-  <Target Name="SymlinkMacOSIntelDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture != 'Arm64' ">
+  <Target Name="SymlinkMacOSIntelDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture != $([System.Runtime.InteropServices.Architecture]::Arm64)) ">
     <Exec Command="ln -sf /usr/local/lib/libleptonica.dylib $(OutDir)x64/libleptonica-1.82.0.dylib" />
     <Exec Command="ln -sf /usr/local/lib/libtesseract.dylib $(OutDir)x64/libtesseract50.dylib" />
   </Target>
 
-  <Target Name="SymlinkMacOSArmDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture == 'Arm64' ">
+  <Target Name="SymlinkMacOSArmDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture == $([System.Runtime.InteropServices.Architecture]::Arm64)) ">
     <Exec Command="ln -sf /opt/homebrew/lib/libleptonica.dylib $(OutDir)x64/libleptonica-1.82.0.dylib" />
     <Exec Command="ln -sf /opt/homebrew/lib/libtesseract.dylib $(OutDir)x64/libtesseract50.dylib" />
   </Target>
