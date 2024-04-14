@@ -51,4 +51,11 @@ jobs:
       run: ls -lh src/Tesseract.Net48Tests/bin/Debug/net48/x64
 
     - name: Test
-      run: dotnet test src/Tesseract.sln --no-build --verbosity normal --logger "console;verbosity=detailed"
+      run: dotnet test src/Tesseract.sln --no-build --verbosity normal --logger "trx;verbosity=detailed;LogFilePrefix=testResults"
+
+    - name: Upload dotnet test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: dotnet-results-${{ matrix.os }}
+        path: TestResults
+      if: ${{ always() }}
