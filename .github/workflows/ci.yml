@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-12]
+        os: [ubuntu-22.04, ubuntu-20.04, macos-14, macos-13, macos-12, windows-2022, windows-2019]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -34,8 +34,8 @@ jobs:
         sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel &&
         sudo apt-get update &&
         sudo apt-get install tesseract-ocr && 
-        ln -s /usr/lib/x86_64-linux-gnu/liblept.so.5 /usr/lib/x86_64-linux-gnu/libleptonica-1.82.0.so && 
-        ln -s /usr/lib/x86_64-linux-gnu/libtesseract.so.5 /usr/lib/x86_64-linux-gnu/libtesseract50.so
+        sudo ln -s /usr/lib/x86_64-linux-gnu/liblept.so.5 /usr/lib/x86_64-linux-gnu/libleptonica-1.82.0.so && 
+        sudo ln -s /usr/lib/x86_64-linux-gnu/libtesseract.so.5 /usr/lib/x86_64-linux-gnu/libtesseract50.so
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
