@@ -18,15 +18,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup .NET Core 3.1.x
+    - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '3.1.x'
-
-    - name: Setup .NET 6.0.x
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.0.x'
 
     - name: Install Ubuntu dependencies
       if: runner.os == 'Linux'
@@ -41,12 +36,20 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         brew install tesseract
-    
-    - name: Install dependencies
+        ls -lh /usr/local/Cellar/tesseract/5.3.4_1
+        ls -lh /usr/local/lib
+
+    - name: Restore dependencies
       run: dotnet restore src/Tesseract.sln
-      
+
     - name: Build
       run: dotnet build src/Tesseract.sln --no-restore
-    
+
+    - name: Check .NET Core 3.1
+      run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
+
+    - name: Check .NET Framework 4.8
+      run: ls -lh src/Tesseract.Net48Tests/bin/Debug/net48/x64
+
     - name: Test
       run: dotnet test src/Tesseract.sln --no-build --verbosity normal
