@@ -24,7 +24,7 @@ namespace InteropDotNet
                 {
                     Logger.TraceError("Failed to load native library \"{0}\".\r\nCheck windows event log.", fileName);
                     var lastError = UnixGetLastError();
-                    Logger.TraceError("Failed to load native library \"{0}\".\r\nLast Error:{1}\r\nCheck inner exception and\\or windows event log.\r\nInner Exception: {2}", fileName, lastError, e.ToString());
+                    Logger.TraceError("Failed to load native library \"{0}\".\r\nLast Error:{1}\r\nCheck inner exception and\\or windows event log.", fileName, lastError);
                 }
             }
             catch (Exception e)
