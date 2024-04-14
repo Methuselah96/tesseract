@@ -43,9 +43,11 @@ jobs:
       run: dotnet build src/Tesseract.sln --no-restore
 
     - name: Check .NET Core 3.1
+      if: runner.os == 'macOS' || runner.os == 'Linux'
       run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
 
     - name: Check .NET Framework 4.8
+      if: runner.os == 'macOS' || runner.os == 'Linux'
       run: ls -lh src/Tesseract.Net48Tests/bin/Debug/net48/x64
 
     - name: Test
