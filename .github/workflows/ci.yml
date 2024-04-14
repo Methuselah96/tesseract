@@ -26,7 +26,7 @@ jobs:
     - name: Install Ubuntu dependencies
       if: runner.os == 'Linux'
       run: |
-        sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel
+        sudo add-apt-repository ppa:alex-p/tesseract-ocr5
         sudo apt-get update
         apt-cache policy tesseract-ocr
         sudo apt-get install tesseract-ocr
@@ -34,9 +34,7 @@ jobs:
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
-      run: |
-        brew install tesseract
-        ls -lh /usr/local/lib
+      run: brew install tesseract
 
     - name: Restore dependencies
       run: dotnet restore src/Tesseract.sln
