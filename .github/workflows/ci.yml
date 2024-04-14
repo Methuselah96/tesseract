@@ -26,17 +26,14 @@ jobs:
     - name: Install Ubuntu dependencies
       if: runner.os == 'Linux'
       run: |
-        sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel &&
-        sudo apt-get update &&
-        sudo apt-get install tesseract-ocr && 
-        sudo ln -s /usr/lib/x86_64-linux-gnu/liblept.so.5 /usr/lib/x86_64-linux-gnu/libleptonica-1.82.0.so && 
-        sudo ln -s /usr/lib/x86_64-linux-gnu/libtesseract.so.5 /usr/lib/x86_64-linux-gnu/libtesseract50.so
+        sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel
+        sudo apt-get update
+        sudo apt-get install tesseract-ocr
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
       run: |
         brew install tesseract
-        ls -lh /usr/local/Cellar/tesseract/5.3.4_1
         ls -lh /usr/local/lib
 
     - name: Restore dependencies
