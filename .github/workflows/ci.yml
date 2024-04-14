@@ -2,12 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ 'macos-fix' ]
+    branches: [ "enable-ci" ]
   pull_request:
-    branches: [ 'main', 'develop' ]
-    paths:
-    - '**.cs'
-    - '**.csproj'
+    branches: [ "enable-ci" ]
 
 env:
   DOTNET_NOLOGO: true
