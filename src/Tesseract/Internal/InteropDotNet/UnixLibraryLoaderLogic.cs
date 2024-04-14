@@ -118,16 +118,16 @@ namespace InteropDotNet
             return _useSystemLibrary2.Value ? dlerror2() : dlerror1();
         }
 
-        [DllImport("libdl", EntryPoint = "dlopen")]
+        [DllImport("libdl.so", EntryPoint = "dlopen")]
         private static extern IntPtr dlopen1(String fileName, int flags);
 
-        [DllImport("libdl", EntryPoint = "dlclose", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdl.so", EntryPoint = "dlclose", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         private static extern int dlclose1(IntPtr handle);
 
-        [DllImport("libdl", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdl.so", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         private static extern IntPtr dlsym1(IntPtr handle, String symbol);
 
-        [DllImport("libdl", EntryPoint = "dlerror", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        [DllImport("libdl.so", EntryPoint = "dlerror", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         private static extern IntPtr dlerror1();
 
         [DllImport("libdl.so.2", EntryPoint = "dlopen")]
