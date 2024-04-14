@@ -210,7 +210,7 @@
   </ItemGroup>
 
   <Target Name="SymlinkLinuxDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
-    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/liblept.so $(OutDir)x64/libleptonica-1.82.0.so" />
+    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/liblept.so.5 $(OutDir)x64/libleptonica-1.82.0.so" />
     <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/libtesseract.so.5 $(OutDir)x64/libtesseract50.so" />
   </Target>
 
