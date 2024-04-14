@@ -28,6 +28,7 @@ jobs:
       run: |
         sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel
         sudo apt-get update
+        sudo apt list -a tesseract-ocr
         sudo apt-get install tesseract-ocr
         ls -lh /usr/lib/x86_64-linux-gnu
 
