@@ -32,9 +32,7 @@ jobs:
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
-      run: |
-        brew install tesseract
-        ls -lh /usr/local/lib
+      run: brew install tesseract
 
     - name: Restore dependencies
       run: dotnet restore src/Tesseract.sln
