@@ -21,7 +21,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '3.1.x'
+        dotnet-version: 8.0.x
 
     - name: Install Ubuntu dependencies
       if: runner.os == 'Linux'
@@ -48,10 +48,10 @@ jobs:
 
     - name: Check .NET Core 3.1
       if: runner.os == 'macOS' || runner.os == 'Linux'
-      run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
+      run: ls -lh src/Tesseract.Net8Tests/bin/Debug/net8/x64
 
     - name: Test .NET Core
-      run: dotnet test src/Tesseract.NetCore31Tests/Tesseract.NetCore31Tests.csproj --no-build --verbosity normal
+      run: dotnet test src/Tesseract.Net8Tests/Tesseract.Net8Tests.csproj --no-build --verbosity normal
 
     - name: Test .NET Framework
       if: runner.os == 'Windows'
