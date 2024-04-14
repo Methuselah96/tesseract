@@ -31,18 +31,16 @@ jobs:
     - name: Install Ubuntu dependencies
       if: runner.os == 'Linux'
       run: |
+        sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel &&
         sudo apt-get update &&
-        sudo apt-get install -y tesseract-ocr libleptonica-dev && 
-        ls -la /usr/local/lib && 
-        ls -la /usr/lib/x86_64-linux-gnu
+        sudo apt-get install -y libleptonica-dev tesseract-ocr && 
+        ln -s /usr/lib/x86_64-linux-gnu/liblept.so.5 ./out/x64/libleptonica-1.82.0.so && 
+        ln -s /usr/lib/x86_64-linux-gnu/libtesseract.so.5 ./out/x64/libtesseract50.so
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
       run: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
-        brew tap-new local/versions &&
-        brew extract --version=4.1.1 tesseract local/versions &&
-        brew install local/versions/tesseract@4.1.1 mono-libgdiplus
+        brew install leptonica tesseract
     
     - name: Install dependencies
       run: dotnet restore src/Tesseract.sln
