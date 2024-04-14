@@ -19,10 +19,10 @@ namespace InteropDotNet
 #if NETCORE || NETSTANDARD
             if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return OperatingSystem.Windows;
-            if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return OperatingSystem.Unix;
             if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 return OperatingSystem.MacOSX;
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                return OperatingSystem.Unix;
             
             return OperatingSystem.Unknown;
 #else
