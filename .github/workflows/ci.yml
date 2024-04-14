@@ -40,20 +40,16 @@ jobs:
     - name: Build
       run: dotnet build src/Tesseract.sln --no-restore
 
-    - name: Check .NET Core 3.1
-      if: runner.os == 'macOS' || runner.os == 'Linux'
-      run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
-
     - name: Check .NET Framework 4.8
       if: runner.os == 'macOS' || runner.os == 'Linux'
       run: ls -lh src/Tesseract.Net48Tests/bin/Debug/net48/x64
 
-    - name: Test
-      run: dotnet test src/Tesseract.sln --no-build --verbosity normal --logger "trx;verbosity=detailed;LogFilePrefix=testResults" --results-directory "TestResults"
+    - name: Check .NET Core 3.1
+      if: runner.os == 'macOS' || runner.os == 'Linux'
+      run: ls -lh src/Tesseract.NetCore31Tests/bin/Debug/netcoreapp3.1/x64
 
-    - name: Upload dotnet test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: dotnet-results-${{ matrix.os }}
-        path: TestResults
-      if: ${{ always() }}
+    - name: Test .NET Framework 4.8
+      run: dotnet test src/Tesseract.Net48Tests/Tesseract.Net48Tests.csproj --no-build --verbosity normal
+
+    - name: Test .NET Core 3.1
+      run: dotnet test src/Tesseract.NetCore31Tests/Tesseract.NetCore31Tests.csproj --no-build --verbosity normal
