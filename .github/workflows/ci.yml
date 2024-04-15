@@ -34,7 +34,9 @@ jobs:
 
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
-      run: brew install tesseract --force --overwrite
+      run: |
+        rm '/usr/local/bin/2to3'
+        brew install tesseract
 
     - name: Restore dependencies
       run: dotnet restore src/Tesseract.sln
