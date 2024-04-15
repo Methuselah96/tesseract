@@ -34,7 +34,7 @@ jobs:
 
     # https://github.com/actions/setup-python/issues/577
     - name: Fix issue with pre-installed Python
-      if: ${{ matrix-os == 'macos-13' }}
+      if: matrix.os == 'macos-13'
       run: brew link --overwrite python@3.12
 
     - name: Install macOS dependencies
