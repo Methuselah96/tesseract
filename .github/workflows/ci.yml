@@ -32,13 +32,14 @@ jobs:
         sudo apt-get install tesseract-ocr
         ls -lh /usr/lib/x86_64-linux-gnu
 
+    # https://github.com/actions/setup-python/issues/577
+    - name: Fix issue with pre-installed Python
+      if: ${{ matrix-os == 'macos-13' }}
+      run: brew link --overwrite python@3.12
+
     - name: Install macOS dependencies
       if: runner.os == 'macOS'
-      run: |
-        rm '/usr/local/bin/2to3'
-        rm '/usr/local/bin/2to3-3.12'
-        rm '/usr/local/bin/idle3'
-        brew install tesseract
+      run: brew install tesseract
 
     - name: Restore dependencies
       run: dotnet restore src/Tesseract.sln
