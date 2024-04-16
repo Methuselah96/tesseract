@@ -40,12 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="nunit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.3.0">
+    <PackageReference Include="nunit" Version="3.14.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -210,12 +210,12 @@
   </ItemGroup>
 
   <Target Name="SymlinkLinuxDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
-    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/liblept.so $(OutDir)x64/libleptonica-1.80.0.so" />
-    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/libtesseract.so.4 $(OutDir)x64/libtesseract41.so" />
+    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/liblept.so.5 $(OutDir)x64/libleptonica-1.82.0.so" />
+    <Exec Command="ln -sf /usr/lib/x86_64-linux-gnu/libtesseract.so.5 $(OutDir)x64/libtesseract50.so" />
   </Target>
 
   <Target Name="SymlinkMacOSDependencies" AfterTargets="AfterBuild" Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' ">
-    <Exec Command="ln -sf /usr/local/lib/liblept.dylib $(OutDir)x64/libleptonica-1.80.0.dylib" />
-    <Exec Command="ln -sf /usr/local/lib/libtesseract.dylib $(OutDir)x64/libtesseract41.dylib" />
+	<Exec Command="ln -sf /usr/local/lib/libleptonica.dylib $(OutDir)x64/libleptonica-1.82.0.dylib" />
+    <Exec Command="ln -sf /usr/local/lib/libtesseract.dylib $(OutDir)x64/libtesseract50.dylib" />
   </Target>
 </Project>
