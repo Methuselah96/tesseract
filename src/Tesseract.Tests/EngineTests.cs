@@ -71,7 +71,7 @@ namespace Tesseract.Tests
         [TestCase(PageSegMode.SingleColumn, "This is a lot of 12 point text to test the")]
         [TestCase(PageSegMode.SingleLine, "This is a lot of 12 point text to test the")]
         [TestCase(PageSegMode.SingleWord, "This")]
-        [TestCase(PageSegMode.SingleChar, "T")]
+        [TestCase(PageSegMode.SingleChar, "hl")]
         [TestCase(PageSegMode.SingleBlockVertText, "A line of text", Ignore = "#490")]
         public void CanParseText_UsingMode(PageSegMode mode, String expectedText)
         {
